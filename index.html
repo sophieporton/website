@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sophie Porton — Data Scientist & NLP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --serif: 'DM Serif Display', serif;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --bg: #fafaf7;
+      --ink: #1a1a18;
+      --muted: #6b6b67;
+      --line: rgba(0,0,0,0.1);
+      --tag-bg: #f0efea;
+      --hover-bg: #f0efea;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 0.5px solid var(--line);
+      position: sticky; top: 0; background: var(--bg); z-index: 10;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.1rem; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 2.5rem 4rem;
+      max-width: 860px;
+      border-bottom: 0.5px solid var(--line);
+    }
+    .hero-label {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+      color: var(--muted); text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.1; font-weight: 400; letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; }
+    .hero p {
+      font-size: 1rem; color: var(--muted); max-width: 520px;
+      line-height: 1.75; margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--bg); padding: 10px 20px;
+      font-size: 13px; font-family: var(--sans); font-weight: 400;
+      border: none; cursor: pointer; letter-spacing: 0.02em;
+      text-decoration: none; transition: opacity 0.15s;
+    }
+    .hero-cta:hover { opacity: 0.82; }
+
+    /* SECTIONS */
+    .section { padding: 3.5rem 2.5rem; border-bottom: 0.5px solid var(--line); }
+    .section-label {
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+      color: var(--muted); text-transform: uppercase; margin-bottom: 2.5rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5px; border: 0.5px solid var(--line);
+    }
+    .project-card {
+      background: var(--bg); padding: 1.75rem;
+      cursor: pointer; text-align: left; text-decoration: none; color: inherit;
+      display: block; transition: background 0.15s;
+    }
+    .project-card:hover { background: var(--hover-bg); }
+    .project-num {
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .project-title {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+      line-height: 1.25; margin-bottom: 0.75rem;
+    }
+    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+      background: var(--tag-bg); color: var(--muted); padding: 3px 8px;
+    }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .about-grid p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .about-grid p + p { margin-top: 1rem; }
+    .skills-list { display: flex; flex-direction: column; gap: 1rem; }
+    .skill-row { display: flex; align-items: center; gap: 1rem; }
+    .skill-name { font-family: var(--mono); font-size: 12px; color: var(--muted); width: 145px; flex-shrink: 0; }
+    .skill-bar { flex: 1; height: 1px; background: var(--line); position: relative; }
+    .skill-fill { height: 1px; background: var(--ink); }
+
+    /* BLOG */
+    .blog-list { display: flex; flex-direction: column; gap: 1.5px; border: 0.5px solid var(--line); }
+    .blog-card {
+      background: var(--bg); padding: 1.5rem 1.75rem;
+      text-decoration: none; color: inherit; display: flex;
+      justify-content: space-between; align-items: baseline; gap: 2rem;
+      transition: background 0.15s;
+    }
+    .blog-card:hover { background: var(--hover-bg); }
+    .blog-title {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      line-height: 1.3;
+    }
+    .blog-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+    .blog-more {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 1.75rem;
+      font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+      color: var(--muted); text-decoration: none; text-transform: uppercase;
+      border-bottom: 0.5px solid var(--line); padding-bottom: 2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .blog-more:hover { color: var(--ink); border-color: var(--ink); }
+
+    /* CONTACT */
+    .contact-row { display: flex; align-items: baseline; gap: 3rem; flex-wrap: wrap; }
+    .contact-link {
+      font-family: var(--serif); font-size: 1.4rem; font-style: italic;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 0.5px solid var(--line); padding-bottom: 2px;
+      transition: border-color 0.15s;
+    }
+    .contact-link:hover { border-color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer span { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      .hero, .section { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .blog-card { flex-direction: column; gap: 0.5rem; }
+      .contact-row { gap: 1.5rem; }
+      footer { padding: 1.25rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Sophie Porton</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-label">Data Scientist &amp; NLP Specialist</p>
+    <h1>Language, data, and<br><em>the stories they tell</em></h1>
+    <p>I build NLP systems and data pipelines that turn unstructured text into meaningful insight — with a background in Marine Science and a passion for ethical, human-centered AI.</p>
+    <a class="hero-cta" href="#work">View my work →</a>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="work">
+    <p class="section-label">Selected projects</p>
+    <div class="projects-grid">
+
+      <a class="project-card" href="#" target="_blank" rel="noopener">
+        <p class="project-num">01</p>
+        <p class="project-title">Sentiment Analysis Pipeline</p>
+        <p class="project-desc">End-to-end multilingual sentiment classifier trained on domain-specific corpora with 94% accuracy across 6 languages.</p>
+        <div class="tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">HuggingFace</span>
+          <span class="tag">BERT</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank" rel="noopener">
+        <p class="project-num">02</p>
+        <p class="project-title">Named Entity Recognition</p>
+        <p class="project-desc">Custom NER model fine-tuned for scientific literature, extracting species, locations, and environmental indicators.</p>
+        <div class="tags">
+          <span class="tag">spaCy</span>
+          <span class="tag">SciBERT</span>
+          <span class="tag">Python</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank" rel="noopener">
+        <p class="project-num">03</p>
+        <p class="project-title">Ethical Data Governance Framework</p>
+        <p class="project-desc">Research and implementation of data governance principles for crisis response contexts — balancing utility with privacy.</p>
+        <div class="tags">
+          <span class="tag">Data Ethics</span>
+          <span class="tag">Policy</span>
+          <span class="tag">Research</span>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank" rel="noopener">
+        <p class="project-num">04</p>
+        <p class="project-title">Marine Data NLP Classifier</p>
+        <p class="project-desc">Text classification system for categorising ocean survey reports, accelerating analysis of large-scale environmental datasets.</p>
+        <div class="tags">
+          <span class="tag">scikit-learn</span>
+          <span class="tag">NLTK</span>
+          <span class="tag">Pandas</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section" id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div>
+        <p>I'm Sophie — a Data Scientist with a background in Marine Science, now working at the intersection of NLP, data ethics, and applied machine learning. I care about building systems that are not just accurate, but transparent and fair.</p>
+        <p>My work spans research and production: from fine-tuning language models to designing ethical data governance frameworks. I'm particularly interested in how NLP can support environmental and humanitarian applications.</p>
+        <p>Open to consulting, collaborations, and interesting problems.</p>
+      </div>
+      <div class="skills-list">
+        <div class="skill-row">
+          <span class="skill-name">NLP / Transformers</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 95%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Python / PyTorch</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Data analysis</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Data ethics</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">MLOps / Deployment</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Marine Science</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG -->
+  <div class="section" id="blog">
+    <p class="section-label">Writing</p>
+    <div class="blog-list">
+
+      <a class="blog-card" href="https://medium.com/@sophieporton/why-ethical-data-governance-matters-in-times-of-crisis-ea08a42fce08" target="_blank" rel="noopener">
+        <span class="blog-title">Why Ethical Data Governance Matters in Times of Crisis</span>
+        <span class="blog-meta">Apr 2025 →</span>
+      </a>
+
+      <!-- Add more articles here as you publish them -->
+
+    </div>
+    <a class="blog-more" href="https://medium.com/@sophieporton" target="_blank" rel="noopener">All articles on Medium →</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <p class="section-label">Get in touch</p>
+    <div class="contact-row">
+      <a class="contact-link" href="mailto:hello@sophieporton.com">hello@sophieporton.com</a>
+      <a class="contact-link" href="https://medium.com/@sophieporton" target="_blank" rel="noopener">Medium</a>
+      <a class="contact-link" href="https://linkedin.com/in/sophieporton" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="contact-link" href="https://github.com/sophieporton" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Sophie Porton</span>
+    <span>Data Science · London</span>
+  </footer>
+
+</body>
+</html>
